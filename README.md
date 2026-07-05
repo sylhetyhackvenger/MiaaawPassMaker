@@ -1,4 +1,4 @@
-# <p align="center">⚡ PASSWORD MAKER PRO ⚡</p>
+# <p align="center">⚡ PASSWORD GENERATOR ⚡</p>
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&duration=3000&pause=1000&color=006400&center=true&vCenter=true&width=900&lines=Miaaaw+Pass+Generator;Secure+Password+Generation;Terminal+Dashboard+Edition;Fast+%7C+Professional+%7C+Lightweight" alt="Typing Animation"/>
