@@ -8,7 +8,7 @@
 
 # 🔐 Description
 
-**Password Maker Pro** is a modern Python-based terminal application engineered for generating strong, unpredictable, and highly customizable passwords through an elegant fiber-optic inspired dashboard. Designed with usability and performance in mind, it combines a professional command-line interface with secure random password generation, persistent password history, customizable secret integration, and organized serial tracking. Every generated password is automatically logged with timestamps, length, and generation details for future reference. The application features a colorful real-time dashboard, animated terminal interface, structured history viewer, and intuitive workflow that makes password creation fast, efficient, and user-friendly. Built entirely with Python and standard libraries, it requires no external dependencies, making it lightweight, portable, and compatible across Windows, Linux, and macOS terminals. Password Maker Pro is suitable for developers, system administrators, ethical hackers, cybersecurity learners, and anyone who requires reliable password generation in a clean professional terminal environment.
+**Miaaaw Password Maker** is a modern Python-based terminal application engineered for generating strong, unpredictable, and highly customizable passwords through an elegant fiber-optic inspired dashboard. Designed with usability and performance in mind, it combines a professional command-line interface with secure random password generation, persistent password history, customizable secret integration, and organized serial tracking. Every generated password is automatically logged with timestamps, length, and generation details for future reference. The application features a colorful real-time dashboard, animated terminal interface, structured history viewer, and intuitive workflow that makes password creation fast, efficient, and user-friendly. Built entirely with Python and standard libraries, it requires no external dependencies, making it lightweight, portable, and compatible across Windows, Linux, and macOS terminals. Password Maker Pro is suitable for developers, system administrators, ethical hackers, cybersecurity learners, and anyone who requires reliable password generation in a clean professional terminal environment.
 
 ---
 
@@ -23,7 +23,7 @@
 | 🔢 Serial Number Tracking | Automatically assigns serial numbers to every password |
 | 📅 Timestamp Logging | Saves creation date and time for each password |
 | 📏 Adjustable Length | User-defined password length |
-| ⚡ Fiber Optic Dashboard | Modern colorful terminal interface |
+| ⚡ Miaaaw Dashboard | Modern colorful terminal interface |
 | 🖥️ Cross Platform | Supports Linux, Windows, and macOS |
 | 🚀 Lightweight | Uses only Python standard libraries |
 | 🛡️ Randomized Security | Uses Python random character generation |
