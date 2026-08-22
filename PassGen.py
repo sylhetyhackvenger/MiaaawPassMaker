@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Password Maker Pro - Terminal Dashboard Edition
-Fiber optic style UI with professional password generation
-"""
 
 import random
 import string
@@ -13,8 +9,6 @@ from datetime import datetime
 from typing import List, Dict, Optional
 
 class TerminalColors:
-    """Terminal color codes for fiber optic effect"""
-    # Fiber optic colors
     CYAN = '\033[96m'
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
@@ -26,20 +20,16 @@ class TerminalColors:
     DIM = '\033[2m'
     RESET = '\033[0m'
 
-    # Fiber optic effects
-    FIBER1 = '\033[38;5;51m'    # Bright cyan
-    FIBER2 = '\033[38;5;45m'    # Light blue
-    FIBER3 = '\033[38;5;39m'    # Soft blue
-    FIBER4 = '\033[38;5;33m'    # Deep blue
-    FIBER5 = '\033[38;5;27m'    # Dark blue
+    FIBER1 = '\033[38;5;51m'
+    FIBER2 = '\033[38;5;45m'
+    FIBER3 = '\033[38;5;39m'
+    FIBER4 = '\033[38;5;33m'
+    FIBER5 = '\033[38;5;27m'
 
-    # Glow effects
     GLOW = '\033[38;5;123m'
     PULSE = '\033[38;5;159m'
 
 class Dashboard:
-    """Fiber optic dashboard UI"""
-
     BANNER = """
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -76,7 +66,6 @@ class Dashboard:
         self.load_history()
 
     def load_history(self):
-        """Load password history from file"""
         if os.path.exists(self.passwords_file):
             try:
                 with open(self.passwords_file, 'r') as f:
@@ -100,11 +89,9 @@ class Dashboard:
                 pass
 
     def clear_screen(self):
-        """Clear terminal screen"""
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def print_fiber_line(self, text: str, color1: str, color2: str, width: int = 60):
-        """Print a fiber optic line with gradient effect"""
         for i, char in enumerate(text):
             if i % 2 == 0:
                 print(f"{color1}{char}", end='')
@@ -113,7 +100,6 @@ class Dashboard:
         print(TerminalColors.RESET)
 
     def print_header(self):
-        """Print the main header with fiber optic effect"""
         print(TerminalColors.FIBER1 + "="*80 + TerminalColors.RESET)
         print(TerminalColors.FIBER2 + "█"*80 + TerminalColors.RESET)
         print(TerminalColors.FIBER3 + "█" + " "*78 + "█" + TerminalColors.RESET)
@@ -134,7 +120,6 @@ class Dashboard:
         print(TerminalColors.FIBER1 + "="*80 + TerminalColors.RESET)
 
     def print_banner(self):
-        """Print the ASCII banner"""
         print(TerminalColors.FIBER1 + self.BANNER + TerminalColors.RESET)
         print()
         print(TerminalColors.FIBER3 + "█"*80 + TerminalColors.RESET)
@@ -146,11 +131,9 @@ class Dashboard:
         print()
 
     def print_dashboard(self):
-        """Print the main dashboard"""
         self.clear_screen()
         self.print_banner()
 
-        # Stats
         print(TerminalColors.FIBER1 + "╔" + "═"*78 + "╗" + TerminalColors.RESET)
         print(TerminalColors.FIBER1 + "║" + TerminalColors.RESET +
               TerminalColors.BOLD + TerminalColors.WHITE +
@@ -171,12 +154,10 @@ class Dashboard:
         print(TerminalColors.FIBER1 + "╚" + "═"*78 + "╝" + TerminalColors.RESET)
         print()
 
-        # History table
         if self.passwords:
             self.print_history_table()
 
     def print_history_table(self):
-        """Print password history as a table"""
         print(TerminalColors.FIBER2 + "┌" + "─"*78 + "┐" + TerminalColors.RESET)
         print(TerminalColors.FIBER2 + "│" + TerminalColors.RESET +
               TerminalColors.BOLD + TerminalColors.WHITE +
@@ -189,7 +170,6 @@ class Dashboard:
               TerminalColors.RESET + TerminalColors.FIBER2 + "│" + TerminalColors.RESET)
         print(TerminalColors.FIBER2 + "├" + "─"*78 + "┤" + TerminalColors.RESET)
 
-        # Show last 10 passwords
         start = max(0, len(self.passwords) - 10)
         for i in range(start, len(self.passwords)):
             entry = self.passwords[i]
@@ -206,16 +186,13 @@ class Dashboard:
         print()
 
     def generate_password(self, length: int, include_custom: bool = False, custom_secret: str = None) -> str:
-        """Generate a password with optional custom integration"""
         chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*^!?+-="
         password = ''.join(random.choice(chars) for _ in range(length))
 
         if include_custom and custom_secret:
-            # Insert custom secret
             pos = random.randint(0, len(password))
             password = password[:pos] + custom_secret + password[pos:]
 
-            # Pad to desired length
             target_len = length + len(custom_secret)
             while len(password) < target_len:
                 password += random.choice(chars)
@@ -225,7 +202,6 @@ class Dashboard:
         return password
 
     def save_password(self, password: str, custom: bool = False):
-        """Save password to file with serial number"""
         serial = len(self.passwords) + 1
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -245,7 +221,6 @@ class Dashboard:
         return entry
 
     def display_result(self, entry: Dict):
-        """Display generated password in a fiber optic box"""
         print(TerminalColors.FIBER1 + "╔" + "═"*78 + "╗" + TerminalColors.RESET)
         print(TerminalColors.FIBER1 + "║" + TerminalColors.RESET +
               TerminalColors.BOLD + TerminalColors.GREEN +
@@ -271,7 +246,6 @@ class Dashboard:
         print()
 
     def get_user_input(self):
-        """Get user input with fiber optic styling"""
         print(TerminalColors.FIBER3 + "╔" + "═"*78 + "╗" + TerminalColors.RESET)
         print(TerminalColors.FIBER3 + "║" + TerminalColors.RESET +
               TerminalColors.BOLD + TerminalColors.WHITE +
@@ -279,7 +253,6 @@ class Dashboard:
               TerminalColors.RESET + TerminalColors.FIBER3 + "║" + TerminalColors.RESET)
         print(TerminalColors.FIBER3 + "╠" + "═"*78 + "╣" + TerminalColors.RESET)
 
-        # Length input
         print(TerminalColors.FIBER3 + "║" + TerminalColors.RESET +
               TerminalColors.CYAN + "  Enter password length: ".ljust(78) +
               TerminalColors.RESET + TerminalColors.FIBER3 + "║" + TerminalColors.RESET)
@@ -304,7 +277,6 @@ class Dashboard:
               TerminalColors.CYAN + f"  ✅ Length set to: {length}".ljust(78) +
               TerminalColors.RESET + TerminalColors.FIBER3 + "║" + TerminalColors.RESET)
 
-        # Custom secret option
         print(TerminalColors.FIBER3 + "║" + TerminalColors.RESET +
               TerminalColors.CYAN + "  Include custom secret? (y/n): ".ljust(78) +
               TerminalColors.RESET + TerminalColors.FIBER3 + "║" + TerminalColors.RESET)
@@ -330,29 +302,23 @@ class Dashboard:
         return length, include_custom, custom_secret
 
     def run(self):
-        """Main execution loop"""
         while True:
             self.print_dashboard()
 
-            # Get user input
             length, include_custom, custom_secret = self.get_user_input()
 
-            # Generate password
             print(TerminalColors.FIBER2 + "█"*80 + TerminalColors.RESET)
             print(TerminalColors.CYAN + "  ⏳ Generating password..." + TerminalColors.RESET)
             time.sleep(0.5)
 
             password = self.generate_password(length, include_custom, custom_secret)
 
-            # Save and display
             entry = self.save_password(password, include_custom)
 
-            # Show result
             self.clear_screen()
             self.print_banner()
             self.display_result(entry)
 
-            # Ask to continue
             print(TerminalColors.FIBER3 + "╔" + "═"*78 + "╗" + TerminalColors.RESET)
             print(TerminalColors.FIBER3 + "║" + TerminalColors.RESET +
                   TerminalColors.CYAN + "  Generate another password? (y/n): ".ljust(78) +
@@ -363,7 +329,6 @@ class Dashboard:
             if input().strip().lower() != 'y':
                 break
 
-        # Exit gracefully
         self.clear_screen()
         print(TerminalColors.FIBER1 + "="*80 + TerminalColors.RESET)
         print(TerminalColors.FIBER2 + "█"*80 + TerminalColors.RESET)
